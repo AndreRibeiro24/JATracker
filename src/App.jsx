@@ -1,21 +1,9 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import NotFound from './pages/NotFound'
+import React from 'react'
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* Add more routes here */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+    <div>
+      <h1> Hello world      </h1>
+    </div>
   )
 }
-
-export default App
