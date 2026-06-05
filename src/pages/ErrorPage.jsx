@@ -1,33 +1,23 @@
 import React from 'react'
-import {DataContext} from '../context/DataContext.jsx'
-import {useContext} from "react"
+import { useContext } from 'react'                // At every age we must to import the useContext, because without this we can not use it
+import { UserData } from '../context/Context'     //Second, we must to import the createContext() to take the data
+
 
 export default function ErrorPage() {
   
-  const {data, setData} = useContext(DataContext);
-  // console.log(data);
-  const {games} = data;
-  console.log(games)
+  const {data} = useContext(UserData);          // Here we destructuring from an object the data we want to use
+  
+  
+
   return (
-    <div>
-        <h1>Error Page</h1>
-        <p>{games}</p>
-        
-    </div>
-  )
-}
+  <div>
+    <h1>Error Page</h1>
+    {data.map((element) => (
+      <h1 key={element.id}>{element.name}</h1>
+    ))}
+    
+  </div>
+)}
 
 
 
-// {games.map((game) => {
-//   const { id, name, background_image, rating, metacritic } = game;
-
-//   return (
-//     <div key={id}>
-//       <h2>{name}</h2>
-//       <img src={background_image} alt={name} />
-//       <p>Rating: {rating}</p>
-//       <p>Metacritic: {metacritic}</p>
-//     </div>
-//   );
-// })}
