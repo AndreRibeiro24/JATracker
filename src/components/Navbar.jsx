@@ -1,1 +1,6 @@
-//Create Navbar code here
+
+export default function Navbar() {
+  return (
+    <div>Navbar</div>
+  )
+}

@@ -20,7 +20,7 @@ export default function ErrorPage() {
     <FaArrowLeft/>
     <FaArrowRight/>
     <FaMagnifyingGlass/>
-    < FaHeart className ='w-[10%] border h-[5%] text-amber-800'/>
+    <FaHeart className ='w-[10%] border h-[5%] text-amber-800'/>
     <FaGithub/>
     <FaPlaystation/>
     <FaBars/>
