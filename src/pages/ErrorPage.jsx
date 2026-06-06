@@ -10,7 +10,7 @@ import { BsNintendoSwitch } from "react-icons/bs";  // The react-iconsis a packa
 
 export default function ErrorPage() {
   
-  const {data} = useContext(UserData);          // Here we destructuring from an object the data we want to use
+  const {data, setData} = useContext(UserData);          // Here we destructuring from an object the data we want to use
   
   if (!data || data.length === 0) return <p>Loading...</p>
 
@@ -27,7 +27,7 @@ export default function ErrorPage() {
     <Si1Panel/>
     <BsNintendoSwitch/>
     
-    {data.map((element) => (
+    {data.games.map((element) => (
       <h1 key={element.id}>{element.name}</h1>
     ))}
     
