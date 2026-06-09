@@ -1,5 +1,8 @@
 import logo from "../assets/logo.png";
 import NavbarLink from "./NavbarLink";
+import { HiHeart, HiOutlineBars3} from "react-icons/hi2";
+import { Link } from "react-router";
+import NavbarSearch from "./NavbarSearch";
 
 export default function Navbar() {
   return (
@@ -7,27 +10,35 @@ export default function Navbar() {
       <div className="mx-auto max-w-9/10 px-4 relative flex justify-between items-center">
         <div className="flex">
           <div className="p-2">
-            <img
-              alt="JATracker Logo"
-              src={logo}
-              className="h-12 w-auto border-white"
-            />
+            <Link to="/">
+              <img
+                alt="JATracker Logo"
+                src={logo}
+                className="h-12 w-auto border-white"
+              />
+            </Link>
           </div>
           <div className="mt-2 ml-2 flex justify-between gap-8 items-center">
-            <NavbarLink linkName="Home" />
-            <NavbarLink linkName="Games" />
-            <NavbarLink linkName="About Us" />
+            <NavbarLink linkHref="/" linkLabel="Home" />
+            <NavbarLink linkHref="/games" linkLabel="Games" />
+            <NavbarLink linkHref="/about-us" linkLabel="About Us" />
           </div>
         </div>
-        <div>
-          <input
-            name="search"
-            placeholder="Search"
-            className="block w-full rounded-md bg-white py-1.5 pr-3 pl-10 text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400"
+        <div className="flex-1 mx-6 xl:mx-32">
+          <NavbarSearch />
+        </div>
+        <div className="mt-2 flex gap-4">
+          <NavbarLink
+            linkHref="/"
+            linkLabel=<HiHeart className="h-6 w-auto" />
+            icon={true}
+          />
+          <NavbarLink
+            icon={true}
+            linkHref="/"
+            linkLabel=<HiOutlineBars3 className="h-6 w-auto" />
           />
         </div>
-        <div>Favorite</div>
-        <div>Menu</div>
       </div>
     </div>
   );
