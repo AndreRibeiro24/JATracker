@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import Footer from "../components/Footer";
+import GameList from "../components/GameList";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
           <p>about us page</p>
         </Link>
       </div>
+      <GameList />
       <Footer />
     </div>
   );

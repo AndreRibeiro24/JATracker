@@ -25,12 +25,12 @@ function Footer() {
       </section>
       <section className="flex justify-evenly items-start ">
         <aside className="w-[20%]">
-          <h2 className="text-[#8b5cf6] opacity-65 text-shadow-[5px_5px_5px_rbga(125,80,50,1)] text-2xl mb-3.5">
+          <h2 className="text-[#8b5cf6] opacity-65 text-shadow-[5px_5px_5px_rbga(125,80,50,1)] text-2xl mb-8">
             Navigation
           </h2>
           <ul className="text-[#ffffff] opacity-90 relative text-center">
             <motion.li
-              className="mb-2.5 cursor-pointer w-"
+              className="mb-3.5 cursor-pointer relative"
               initial={{
                 color: "#ffffff",
                 textShadow: "none",
@@ -55,7 +55,7 @@ function Footer() {
               Home
             </motion.li>
             <motion.li
-              className="mb-2.5 cursor-pointer text-center relative"
+              className="mb-3.5 cursor-pointer text-center relative"
               initial={{
                 color: "#ffffff",
                 textShadow: "none",
@@ -80,7 +80,7 @@ function Footer() {
               Library
             </motion.li>
             <motion.li
-              className="mb-2.5 cursor-pointer relative text-center"
+              className="mb-3.5 cursor-pointer relative text-center"
               initial={{
                 color: "#ffffff",
                 textShadow: "none",
@@ -105,7 +105,7 @@ function Footer() {
               Favorite Games
             </motion.li>
             <motion.li
-              className="mb-2.5 cursor-pointer relative text-center"
+              className="mb-3.5 cursor-pointer relative text-center"
               initial={{
                 color: "#ffffff",
                 textShadow: "none",
@@ -131,14 +131,86 @@ function Footer() {
             </motion.li>
           </ul>
         </aside>
-        <aside className="w-[20%]">
-          <h2 className="text-[#8b5cf6] opacity-75 mb-3.5 text-2xl">
+        <aside className="w-[30%]">
+          <h2 className="text-[#8b5cf6] opacity-75 mb-8 text-2xl">
             Meet the Team
           </h2>
           <ul className="text-[#ffffff] opacity-90">
-            <li className="mb-2.5 cursor-pointer">Theodor - Full Stack Dev</li>
-            <li className="mb-2.5 cursor-pointer">Julian - Full Stack Dev</li>
-            <li className="mb-2.5 cursor-pointer">Andre - Full Stack Dev</li>
+            <motion.li
+              className="mb-5 cursor-pointer relative text-center"
+              initial={{
+                color: "#ffffff",
+                textShadow: "none",
+              }}
+              whileHover={{
+                color: ["#FF8792", "#ffffff", "#FF8792"],
+                textShadow: [
+                  "2px 2px 8px rgb(255, 0, 0)",
+                  "2px 2px 8px rgb(255, 255, 255)",
+                  "2px 2px 8px rgb(255, 0, 0)",
+                ],
+                transition: {
+                  duration: 1,
+                  repeat: Infinity,
+                },
+              }}
+            >
+              <div className="absolute top-0 left-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
+              Theodor - Full Stack Dev
+            </motion.li>
+            <motion.li
+              className="mb-5 cursor-pointer relative text-center"
+              initial={{
+                color: "#ffffff",
+                textShadow: "none",
+              }}
+              whileHover={{
+                color: ["#FF8792", "#ffffff", "#FF8792"],
+                textShadow: [
+                  "2px 2px 8px rgb(255, 0, 0)",
+                  "2px 2px 8px rgb(255, 255, 255)",
+                  "2px 2px 8px rgb(255, 0, 0)",
+                ],
+                transition: {
+                  duration: 1,
+                  repeat: Infinity,
+                },
+              }}
+            >
+              <div className="absolute top-0 left-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
+              Julian - Full Stack Dev
+            </motion.li>
+            <motion.li
+              className="mb-3.5 cursor-pointer relative text-center"
+              initial={{
+                color: "#ffffff",
+                textShadow: "none",
+              }}
+              whileHover={{
+                color: ["#FF8792", "#ffffff", "#FF8792"],
+                textShadow: [
+                  "2px 2px 8px rgb(255, 0, 0)",
+                  "2px 2px 8px rgb(255, 255, 255)",
+                  "2px 2px 8px rgb(255, 0, 0)",
+                ],
+                transition: {
+                  duration: 1,
+                  repeat: Infinity,
+                },
+              }}
+            >
+              <div className="absolute top-0 left-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
+              Andre - Full Stack Dev
+            </motion.li>
           </ul>
         </aside>
         <aside className="w-[30%] flex justify-center items-center">
