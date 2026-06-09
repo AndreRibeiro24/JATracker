@@ -9,6 +9,7 @@ import GameDetailPage from './pages/GameDetailPage'
 import GameListPage from './pages/GameListPage'
 import ErrorPage from './pages/ErrorPage'
 import AboutUsPage from './pages/AboutUsPage'
+import Navbar from "./components/Navbar"
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
 
   return (
     <div>
+    <Navbar/>
      <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/add-game" element={<AddGamePage/>}/>
