@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import Footer from "../components/Footer";
+import GameList from "../components/GameList";
 import HeroSlider from "../components/HeroSlider";
 
 export default function HomePage() {
