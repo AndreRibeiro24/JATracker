@@ -19,6 +19,7 @@ export function UserProvider({ children }) {
       setLoading(true);
       try {
         const response = await api.get("/db.json"); // if you are allready there you can leave it empty string
+        console.log("raw response:", response.data)
         setLoading(false); // The response from axios is a data object
         const data = response.data.games; // Always we go to data and then to the array
         setData(data);
