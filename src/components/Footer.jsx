@@ -28,9 +28,9 @@ function Footer() {
           <h2 className="text-[#8b5cf6] opacity-65 text-shadow-[5px_5px_5px_rbga(125,80,50,1)] text-2xl mb-3.5">
             Navigation
           </h2>
-          <ul className="text-[#ffffff] opacity-90">
+          <ul className="text-[#ffffff] opacity-90 relative text-center">
             <motion.li
-              className="mb-2.5 cursor-pointer border boredr-amber-50 w-"
+              className="mb-2.5 cursor-pointer w-"
               initial={{
                 color: "#ffffff",
                 textShadow: "none",
@@ -48,9 +48,37 @@ function Footer() {
                 },
               }}
             >
+              <div className="absolute top-0 left-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
               Home
             </motion.li>
-            <motion.li className="mb-2.5 cursor-pointer ">Library</motion.li>
+            <motion.li
+              className="mb-2.5 cursor-pointer text-center relative"
+              initial={{
+                color: "#ffffff",
+                textShadow: "none",
+              }}
+              whileHover={{
+                color: ["#FF8792", "#ffffff", "#FF8792"],
+                textShadow: [
+                  "2px 2px 8px rgb(255, 0, 0)",
+                  "2px 2px 8px rgb(255, 255, 255)",
+                  "2px 2px 8px rgb(255, 0, 0)",
+                ],
+                transition: {
+                  duration: 1,
+                  repeat: Infinity,
+                },
+              }}
+            >
+              <div className="absolute top-0 left-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
+              <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
+              Library
+            </motion.li>
             <motion.li
               className="mb-2.5 cursor-pointer relative text-center"
               initial={{
