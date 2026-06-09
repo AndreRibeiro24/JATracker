@@ -16,7 +16,7 @@ import { motion } from "motion/react";
 
 function Footer() {
   return (
-    <main className="border bg-[#0b1326] h-117.5 font-mono">
+    <main className="border bg-[#0b1326] h-[45vh] font-mono">
       <section className="flex items-center justify-center gap-2 my-[2%] border-2 border-[#00687A] w-80 ml-12.5 p-1 rounded-4xl">
         <div className="bg-[#00687A] aspect-square h-3 w-3 rounded-full"></div>
         <h2 className="text-[#00687A] font-extrabold text-md">
@@ -163,16 +163,16 @@ function Footer() {
             "linear-gradient(to right, transparent, #00687A, transparent)",
         }}
       ></div>
-      <section className="flex justify-between items-center mt-5">
-        <aside className="flex gap-2 ml-15 items-center">
+      <section>
+        <aside>
           <FaRegCopyright className="text-[#ffffff] w-3 h-3" />
-          <small className="text-[#ffffff] text-[0.7rem]">
+          <small className="text-[#ffffff] text-">
             2026 JATracker Gaming Platform. All rights reserved
           </small>
         </aside>
-        <aside className="mr-15 w-[20%] flex justify-evenly items-center">
-          <small className="text-[#ffffff] text-[0.7rem]">Privacy Policy</small>
-          <small className="text-[#ffffff] text-[0.7rem]">
+        <aside>
+          <small className="text-[#ffffff]">Privacy Policy</small>
+          <small className="text-[#ffffff] text-[0.5rem]">
             Terms of service
           </small>
         </aside>
