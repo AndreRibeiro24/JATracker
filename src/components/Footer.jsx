@@ -15,7 +15,7 @@ import {
 
 function Footer() {
   return (
-    <main className="border bg-[#0b1326] h-110 font-mono">
+    <main className="border bg-[#0b1326] h-117.5 font-mono">
       <section className="flex items-center justify-center gap-2 my-[2%] border-2 border-[#00687A] w-80 ml-12.5 p-1 rounded-4xl">
         <div className="bg-[#00687A] aspect-square h-3 w-3 rounded-full"></div>
         <h2 className="text-[#00687A] font-extrabold text-md">
@@ -28,10 +28,10 @@ function Footer() {
             Navigation
           </h2>
           <ul className="text-[#ffffff] opacity-90">
-            <li className="mb-1.5 cursor-pointer">Home</li>
-            <li className="mb-1.5 cursor-pointer">Library</li>
-            <li className="mb-1.5 cursor-pointer">Favorite Games</li>
-            <li className="mb-1.5 cursor-pointer">Contact Us</li>
+            <li className="mb-2.5 cursor-pointer">Home</li>
+            <li className="mb-2.5 cursor-pointer">Library</li>
+            <li className="mb-2.5 cursor-pointer">Favorite Games</li>
+            <li className="mb-2.5 cursor-pointer">Contact Us</li>
           </ul>
         </aside>
         <aside className="w-[30%]">
@@ -39,16 +39,16 @@ function Footer() {
             Meet the Team
           </h2>
           <ul className="text-[#ffffff] opacity-90">
-            <li className="mb-1.5 cursor-pointer">Theodor - Full Stack Dev</li>
-            <li className="mb-1.5 cursor-pointer">Julian - Full Stack Dev</li>
-            <li className="mb-1.5 cursor-pointer">Andre - Full Stack Dev</li>
+            <li className="mb-2.5 cursor-pointer">Theodor - Full Stack Dev</li>
+            <li className="mb-2.5 cursor-pointer">Julian - Full Stack Dev</li>
+            <li className="mb-2.5 cursor-pointer">Andre - Full Stack Dev</li>
           </ul>
         </aside>
         <aside className="w-[30%] flex justify-center items-center">
           <Object className="w-50 opacity-100" />
         </aside>
       </section>
-      <section className="flex justify-center gap-5 mb-2">
+      <section className="flex justify-center gap-5 mb-5">
         <FaFacebookF className="text-[#ffffff] w-5 h-5" />
         <FaInstagram className="text-[#ffffff] w-5 h-5" />
         <FaXTwitter className="text-[#ffffff] w-5 h-5" />
@@ -66,16 +66,16 @@ function Footer() {
             "linear-gradient(to right, transparent, #00687A, transparent)",
         }}
       ></div>
-      <section className="flex justify-center gap-[35%] items-center mt-5">
-        <aside className="flex gap-2">
+      <section className="flex justify-between items-center mt-5">
+        <aside className="flex gap-2 ml-15 items-center">
           <FaRegCopyright className="text-[#ffffff] w-3 h-3" />
-          <small className="text-[#ffffff] text-[0.6rem]">
+          <small className="text-[#ffffff] text-[0.7rem]">
             2026 JATracker Gaming Platform. All rights reserved
           </small>
         </aside>
-        <aside>
-          <small className="text-[#ffffff] text-[0.6rem]">Privacy Policy</small>
-          <small className="text-[#ffffff] text-[0.6rem]">
+        <aside className='mr-15 w-[20%] flex justify-evenly items-center'>
+          <small className="text-[#ffffff] text-[0.7rem]">Privacy Policy</small>
+          <small className="text-[#ffffff] text-[0.7rem]">
             Terms of service
           </small>
         </aside>
