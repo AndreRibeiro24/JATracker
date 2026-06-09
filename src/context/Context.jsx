@@ -1,48 +1,49 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-export const UserData = createContext();                                                                // This is the context object and we import it at each component to take the data
+export const UserData = createContext(); // This is the context object and we import it at each component to take the data
 
 const api = axios.create({
-  baseURL : "https://raw.githubusercontent.com/Julianrussmeyer/JATracker-backend/refs/heads/main",      // To have access to json-server repo at Github, you go at the file db.jsx and copy paste the raw URL
-});                                                                                                     // Normaly when you have API key you must to add headers: { 'Authorization' :  , 'x-api-key' : }
+  baseURL:
+    "https://raw.githubusercontent.com/Julianrussmeyer/JATracker-backend/refs/heads/main", // To have access to json-server repo at Github, you go at the file db.jsx and copy paste the raw URL
+}); // Normaly when you have API key you must to add headers: { 'Authorization' :  , 'x-api-key' : }
 
-export function UserProvider({children}){                       // We import the UserProvider only to wrap the components we want to share the data
+export function UserProvider({ children }) {
+  // We import the UserProvider only to wrap the components we want to share the data
 
-    const [data, setData] = useState([]);                       // State to store the fetched data. Starts as empty array
-    const [loading, setLoading] = useState(true);
-    
+  const [data, setData] = useState([]); // State to store the fetched data. Starts as empty array
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        
-        const getData = async() => {
-            setLoading(true)
-            try {
-                const response = await api.get("/db.json")      // if you are allready there you can leave it empty string
-                setLoading(false)                               // The response from axios is a data object
-                const data = response.data            // Always we go to data and then to the array
-                setData(data)
-            } catch (error) {
-                setLoading(false)
-                console.log(error)
-            }finally{
-                setLoading(false)                               // After all goes to the finally, where we set the loading at false
-            }
-        }
-        
-        getData();
-    },[])                                                       // Runs once when the component mounts. The [] means no dependencies - never runs again
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      try {
+        const response = await api.get("/db.json"); // if you are allready there you can leave it empty string
+        setLoading(false); // The response from axios is a data object
+        const data = response.data.games; // Always we go to data and then to the array
+        setData(data);
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+      } finally {
+        setLoading(false); // After all goes to the finally, where we set the loading at false
+      }
+    };
 
-    
-   // Here we will create the functions and pass them from the UserData.Provider
+    getData();
+  }, []); // Runs once when the component mounts. The [] means no dependencies - never runs again
 
-    return(
-        <UserData.Provider value={{data, loading, setData}}>             {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}
-            {children}                                          {/* if value={data} this means that we have the array value, else value={{data}} we have an object */}
-        </UserData.Provider>
-    );
+  // Here we will create the functions and pass them from the UserData.Provider
+
+  return (
+    <UserData.Provider value={{ data, loading, setData }}>
+      {" "}
+      {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}
+      {children}{" "}
+      {/* if value={data} this means that we have the array value, else value={{data}} we have an object */}
+    </UserData.Provider>
+  );
 }
-
 
 /*
 value={data} — passes the array directly:
