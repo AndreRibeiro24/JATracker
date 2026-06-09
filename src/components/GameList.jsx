@@ -8,8 +8,9 @@ import { BsNintendoSwitch } from "react-icons/bs";
 import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
 
-function GameList() {
+function GameList({ results }) {
   const { data } = useContext(UserData);
+  const gamesToShow = results ?? data ?? [];
 
   return (
     <main className="w-[95vw] mx-auto mb-40">
@@ -25,7 +26,10 @@ function GameList() {
           <h2>All games</h2>
         </aside>
         <aside className="flex flex-wrap gap-5">
-          {data.map((element) => {
+          {gamesToShow.length === 0 && (
+            <p>No games match your search.</p>
+          )}
+          {gamesToShow.map((element) => {
             const hasXbox = element.platforms.some(
               (p) =>
                 p.platform?.name === "Xbox Series S/X" ||
