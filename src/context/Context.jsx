@@ -13,28 +13,27 @@ export function UserProvider({children}){                       // We import the
     const [loading, setLoading] = useState(true);
     
 
-    useEffect(() => {
-        
-        const getData = async() => {
-            setLoading(true)
-            try {
-                const response = await api.get("/db.json")      // if you are allready there you can leave it empty string
-                setLoading(false)                               // The response from axios is a data object
-                const data = response.data            // Always we go to data and then to the array
-                setData(data)
-            } catch (error) {
-                setLoading(false)
-                console.log(error)
-            }finally{
-                setLoading(false)                               // After all goes to the finally, where we set the loading at false
-            }
-        }
-        
-        getData();
-    },[])                                                       // Runs once when the component mounts. The [] means no dependencies - never runs again
+  useEffect(() => {
+    const getData = async () => {
+      setLoading(true);
+      try {
+        const response = await api.get("/db.json"); // if you are allready there you can leave it empty string
+        console.log("raw response:", response.data)
+        setLoading(false); // The response from axios is a data object
+        const data = response.data.games; // Always we go to data and then to the array
+        setData(data);
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+      } finally {
+        setLoading(false); // After all goes to the finally, where we set the loading at false
+      }
+    };
 
-    
-   // Here we will create the functions and pass them from the UserData.Provider
+    getData();
+  }, []); // Runs once when the component mounts. The [] means no dependencies - never runs again
+
+  // Here we will create the functions and pass them from the UserData.Provider
 
     return(
         <UserData.Provider value={{data, loading, setData}}>             {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}
