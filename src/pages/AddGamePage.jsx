@@ -1,19 +1,8 @@
-import {useState, useEffect, useContext} from "react"
-import {UserData} from "../context/Context"
+import AddGameForm from "../components/AddGameForm.jsx"
+
 export default function AddGamePage() {
-  const {addGame} = useContext(UserData);
-
-  const [title,setTitle] = useState("");
-  const [genre,setGenre] = useState("");
-  const [description,setDescription] = useState("");
-  const [heroImage, setHeroImage] = useState("");
-  const [screenshots, setScreenshots] = useState("");
-
-  const GENRES = [
-    
-  ]
-
-  return (
-    <div>AddGamePage</div>
-  )
+  <div>
+    <h1> Add Your Next Game</h1>
+    <AddGameForm/>
+  </div>
 }
