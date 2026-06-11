@@ -13,6 +13,17 @@ export function UserProvider({ children }) {
 
   const [data, setData] = useState([]); // State to store the fetched data. Starts as empty array
   const [loading, setLoading] = useState(true);
+  const [userGames,setUserGames] = useState([]); // Information pushed from the Add Game form
+
+  const addGame = async(game)=>{
+    try{
+      const response = await api.post("/games",game);
+      setUserGames(prev=> [...prev, response.data])
+    }catch(error){
+      console.log(error)
+    }
+  }
+  // To develop next: Toggle favourite for the games that are added as favourite
 
   useEffect(() => {
     const getData = async () => {
@@ -37,7 +48,7 @@ export function UserProvider({ children }) {
   // Here we will create the functions and pass them from the UserData.Provider
 
   return (
-    <UserData.Provider value={{ data, loading, setData }}>
+    <UserData.Provider value={{ data, loading, userGames, addGame }}>
       {" "}
       {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}
       {children}{" "}
