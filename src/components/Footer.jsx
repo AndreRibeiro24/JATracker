@@ -16,8 +16,15 @@ import { motion } from "motion/react";
 
 function Footer() {
   return (
-    <main className="border bg-[#0b1326] h-117.5 font-mono">
-      <section className="flex items-center justify-center gap-2 my-[2%] border-2 border-[#00687A] w-80 ml-12.5 p-1 rounded-4xl">
+    <main className=" bg-[#0b1326] h-125 font-mono">
+      <div
+        className="h-1 bg-[#00687A] w-[85vw] m-auto mb-10"
+        style={{
+          background:
+            "linear-gradient(to right, transparent, #00687A, transparent)",
+        }}
+      ></div>
+      <section className="flex items-center justify-center gap-2 mb-10 border-2 border-[#00687A] w-80 ml-12.5 p-1 rounded-4xl">
         <div className="bg-[#00687A] aspect-square h-3 w-3 rounded-full"></div>
         <h2 className="text-[#00687A] font-extrabold text-md">
           FOOTER STATUS: ONLINE
