@@ -1,5 +1,3 @@
-import React from 'react'
-import Error from './pages/ErrorPage.jsx'
 import { useContext } from 'react'
 import { UserData } from './context/Context.jsx'
 import {Routes, Route} from 'react-router-dom';
@@ -10,6 +8,7 @@ import GameListPage from './pages/GameListPage'
 import ErrorPage from './pages/ErrorPage'
 import AboutUsPage from './pages/AboutUsPage'
 import Navbar from "./components/Navbar"
+import Footer from "./components/Footer"
 
 export default function App() {
 
@@ -36,6 +35,7 @@ export default function App() {
         <Route path= "*" element={<ErrorPage/>}/>
         <Route path="/about-us" element={<AboutUsPage/>}/>
      </Routes>
+     <Footer/>
     </div>
   )
 }
