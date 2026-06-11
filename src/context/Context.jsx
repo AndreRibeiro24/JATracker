@@ -15,6 +15,17 @@ export function UserProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
+  const [userGames,setUserGames] = useState([]); // Information pushed from the Add Game form
+
+  const addGame = async(game)=>{
+    try{
+      const response = await api.post("/games",game);
+      setUserGames(prev=> [...prev, response.data])
+    }catch(error){
+      console.log(error)
+    }
+  }
+  // To develop next: Toggle favourite for the games that are added as favourite
 
   useEffect(() => {
     const getData = async () => {
@@ -59,7 +70,8 @@ export function UserProvider({ children }) {
       value={{
         data,
         loading,
-        setData,
+        userGames, 
+        addGame,
         handleFilter,
         filteredData,
         isFiltering,
