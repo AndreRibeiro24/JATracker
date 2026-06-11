@@ -1,10 +1,9 @@
 import { Link } from "react-router";
-import {useState} from 'react'
+import { useState } from "react";
 import Footer from "../components/Footer";
 import GameList from "../components/GameList";
 import HeroSlider from "../components/HeroSlider";
-import Searchbar from '../components/Searchbar';
-
+import Searchbar from "../components/Searchbar";
 
 export default function HomePage() {
   const [results, setResults] = useState(null);
@@ -15,10 +14,10 @@ export default function HomePage() {
         <Link to="/about-us">
           <p>about us page</p>
         </Link>
-        <HeroSlider/>
-        <Searchbar onResult={setResults}/>
+        <HeroSlider />
+        <Searchbar onResult={setResults} />
       </div>
-      <GameList results={results}/>
+      <GameList results={results} />
       <Footer />
     </div>
   );

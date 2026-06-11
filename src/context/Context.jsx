@@ -13,13 +13,15 @@ export function UserProvider({ children }) {
 
   const [data, setData] = useState([]); // State to store the fetched data. Starts as empty array
   const [loading, setLoading] = useState(true);
+  const [filteredData, setFilteredData] = useState([]);
+  const [isFiltering, setIsFiltering] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
       try {
         const response = await api.get("/db.json"); // if you are allready there you can leave it empty string
-        console.log("raw response:", response.data)
+
         setLoading(false); // The response from axios is a data object
         const data = response.data.games; // Always we go to data and then to the array
         setData(data);
@@ -36,8 +38,33 @@ export function UserProvider({ children }) {
 
   // Here we will create the functions and pass them from the UserData.Provider
 
+  const handleFilter = (e) => {
+    const searchWord = e.target.value;
+
+    if (!searchWord.trim()) {
+      setIsFiltering(false);
+      setFilteredData(data);
+      return;
+    }
+
+    setIsFiltering(true);
+    const newFilter = data.filter((game) =>
+      game.name.toLowerCase().trim().includes(searchWord.toLowerCase().trim()),
+    );
+    setFilteredData(newFilter);
+  };
+
   return (
-    <UserData.Provider value={{ data, loading, setData }}>
+    <UserData.Provider
+      value={{
+        data,
+        loading,
+        setData,
+        handleFilter,
+        filteredData,
+        isFiltering,
+      }}
+    >
       {" "}
       {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}
       {children}{" "}

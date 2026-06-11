@@ -9,26 +9,31 @@ import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
 
 function GameList({ results }) {
-  const { data } = useContext(UserData);
-  const gamesToShow = results ?? data ?? [];
+  const { data, filteredData, isFiltering } = useContext(UserData);
+  // const gamesToShow = results ?? data ?? [];
+  const gamesToShow = isFiltering ? filteredData : data;
 
   return (
-    <main className="w-[95vw] mx-auto mb-40">
+    <main className="w-[100vw] mx-auto pb-40 bg-[#0b1326]">
       <section>
-        <aside>
-          <div></div>
-          <h2>Based on your favorites</h2>
+        <aside className="flex items-center w-[90vw] mx-auto gap-5 mb-2">
+          <div className="bg-[#00687A] w-2 h-10"></div>
+          <h2 className="text-[#ffffff] font-mono font-bold text-xl">
+            Based on your favorites
+          </h2>
         </aside>
       </section>
       <section>
-        <aside>
-          <div></div>
-          <h2>All games</h2>
+        <aside className="flex items-center w-[90vw] mx-auto gap-5">
+          <div className="bg-[#00687A] w-2 h-10"></div>
+          <h2 className="text-[#ffffff] font-mono font-bold text-xl">
+            All games
+          </h2>
         </aside>
-        <aside className="flex flex-wrap gap-5">
-          {gamesToShow.length === 0 && (
+        <aside className="flex flex-wrap justify-evenly gap-3 w-[90%] mx-auto">
+          {/*{gamesToShow.length === 0 && (
             <p>No games match your search.</p>
-          )}
+          )}*/}
           {gamesToShow.map((element) => {
             const hasXbox = element.platforms.some(
               (p) =>
@@ -64,7 +69,10 @@ function GameList({ results }) {
             );
 
             return (
-              <article key={element.id} className="w-60 h-60">
+              <article
+                key={element.id}
+                className="w-60 h-60 cursor-pointer mt-20"
+              >
                 <div
                   className="w-[100%] h-40 bg-cover bg-center mb-5"
                   style={{
@@ -72,17 +80,23 @@ function GameList({ results }) {
                   }}
                 ></div>
                 <section>
-                  <h2 className="my-2">{element.name}</h2>
+                  <h2 className="my-2 text-amber-50 text-xl">{element.name}</h2>
                   <div className="flex gap-3">
-                    {hasXbox && <FaXbox />}
-                    {hasPlaystation && <FaPlaystation />}
-                    {hasPc && <GrPersonalComputer />}
-                    {hasLinux && <FaLinux />}
-                    {hasAndroid && <IoLogoAndroid />}
-                    {hasNintendo && <BsNintendoSwitch />}
-                    {hasVita && <SiPlaystationvita />}
-                    {hasMac && <MdOutlineDesktopMac />}
-                    {hasIos && <FaAppStoreIos />}
+                    {hasXbox && <FaXbox className="text-amber-50" />}
+                    {hasPlaystation && (
+                      <FaPlaystation className="text-amber-50" />
+                    )}
+                    {hasPc && <GrPersonalComputer className="text-amber-50" />}
+                    {hasLinux && <FaLinux className="text-amber-50" />}
+                    {hasAndroid && <IoLogoAndroid className="text-amber-50" />}
+                    {hasNintendo && (
+                      <BsNintendoSwitch className="text-amber-50" />
+                    )}
+                    {hasVita && <SiPlaystationvita className="text-amber-50" />}
+                    {hasMac && (
+                      <MdOutlineDesktopMac className="text-amber-50" />
+                    )}
+                    {hasIos && <FaAppStoreIos className="text-amber-50" />}
                   </div>
                 </section>
               </article>
