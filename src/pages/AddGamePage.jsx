@@ -1,8 +1,9 @@
-import AddGameForm from "../components/AddGameForm.jsx"
 
+import AddGameForm from '../components/AddGameForm.jsx'
 export default function AddGamePage() {
+  return(
   <div>
-    <h1> Add Your Next Game</h1>
     <AddGameForm/>
   </div>
-}
+  )}
+  
