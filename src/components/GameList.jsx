@@ -7,6 +7,7 @@ import { IoLogoAndroid } from "react-icons/io";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 function GameList({ results }) {
   const { data, filteredData, isFiltering } = useContext(UserData);
@@ -69,37 +70,47 @@ function GameList({ results }) {
             );
 
             return (
-              <article
-                key={element.id}
-                className="w-60 h-60 cursor-pointer mt-20"
-              >
-                <div
-                  className="w-[100%] h-40 bg-cover bg-center mb-5"
-                  style={{
-                    backgroundImage: `url(${element.background_image})`,
-                  }}
-                ></div>
-                <section>
-                  <h2 className="my-2 text-amber-50 text-xl">{element.name}</h2>
-                  <div className="flex gap-3">
-                    {hasXbox && <FaXbox className="text-amber-50" />}
-                    {hasPlaystation && (
-                      <FaPlaystation className="text-amber-50" />
-                    )}
-                    {hasPc && <GrPersonalComputer className="text-amber-50" />}
-                    {hasLinux && <FaLinux className="text-amber-50" />}
-                    {hasAndroid && <IoLogoAndroid className="text-amber-50" />}
-                    {hasNintendo && (
-                      <BsNintendoSwitch className="text-amber-50" />
-                    )}
-                    {hasVita && <SiPlaystationvita className="text-amber-50" />}
-                    {hasMac && (
-                      <MdOutlineDesktopMac className="text-amber-50" />
-                    )}
-                    {hasIos && <FaAppStoreIos className="text-amber-50" />}
-                  </div>
-                </section>
-              </article>
+              <Link to={`/game-detail/${element.id}`}>
+                <article
+                  key={element.id}
+                  className="w-60 h-60 cursor-pointer mt-20"
+                >
+                  <div
+                    className="w-[100%] h-40 bg-cover bg-center mb-5"
+                    style={{
+                      backgroundImage: `url(${element.background_image})`,
+                    }}
+                  ></div>
+                  <section>
+                    <h2 className="my-2 text-amber-50 text-xl">
+                      {element.name}
+                    </h2>
+                    <div className="flex gap-3">
+                      {hasXbox && <FaXbox className="text-amber-50" />}
+                      {hasPlaystation && (
+                        <FaPlaystation className="text-amber-50" />
+                      )}
+                      {hasPc && (
+                        <GrPersonalComputer className="text-amber-50" />
+                      )}
+                      {hasLinux && <FaLinux className="text-amber-50" />}
+                      {hasAndroid && (
+                        <IoLogoAndroid className="text-amber-50" />
+                      )}
+                      {hasNintendo && (
+                        <BsNintendoSwitch className="text-amber-50" />
+                      )}
+                      {hasVita && (
+                        <SiPlaystationvita className="text-amber-50" />
+                      )}
+                      {hasMac && (
+                        <MdOutlineDesktopMac className="text-amber-50" />
+                      )}
+                      {hasIos && <FaAppStoreIos className="text-amber-50" />}
+                    </div>
+                  </section>
+                </article>
+              </Link>
             );
           })}
         </aside>
