@@ -24,7 +24,7 @@ export default function Navbar() {
             <NavbarLink linkHref="/about-us" linkLabel="About Us" />
           </div>
         </div>
-        <div className="flex-1 mx-6 xl:mx-32">
+        <div className="flex-1 mx-6 2xl:mx-64">
           <NavbarSearch />
         </div>
         <div className="mt-2 flex gap-4">

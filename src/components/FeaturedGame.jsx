@@ -9,14 +9,14 @@ export default function FeaturedGame() {
 
   return (
     <div className="w-[100vw] mx-auto bg-[#0b1326]">
-      <div className="py-12 mx-auto max-w-6/10 relative text-white">
+      <div className="py-32 mx-auto max-w-9/10 xl:max-w-6/10 relative text-white">
         <div>
           <h1 className="mb-2 text-4xl font-medium">Featured Game</h1>
           <h4 className="mb-8 text-lg font-light">
             This weeks game highlight, selected by us:
           </h4>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-col-1 sm:grid-cols-2 gap-16 lg:gap-32">
           <div>
             <img
               alt="Game Image"
