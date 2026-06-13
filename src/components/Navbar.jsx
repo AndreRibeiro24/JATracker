@@ -20,7 +20,7 @@ export default function Navbar() {
           </div>
           <div className="mt-2 ml-2 flex justify-between gap-8 items-center">
             <NavbarLink linkHref="/" linkLabel="Home" />
-            <NavbarLink linkHref="/favourite-games" linkLabel="Games" />
+            <NavbarLink linkHref="/add-game" linkLabel="Add Game" />
             <NavbarLink linkHref="/about-us" linkLabel="About Us" />
           </div>
         </div>
