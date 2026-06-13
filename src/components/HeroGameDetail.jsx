@@ -1,12 +1,17 @@
 import { useContext } from "react";
 import { UserData } from "../context/Context";
 
-function HeroGameDetail() {
+function HeroGameDetail({ value }) {
   const { data } = useContext(UserData);
+
+  const game = data.find((element) => element.id === Number(value));
+
+  if (!game) return <p>Game not found</p>;
 
   return (
     <main style={{ backgroundImage: "url()" }}>
-      <section></section>
+      <h1>{game.name}</h1>
+      <p>{game.description}</p>
     </main>
   );
 }
