@@ -4,6 +4,7 @@ import NavbarLink from "./NavbarLink";
 
 export default function FeaturedGame() {
   const { data } = useContext(UserData);
+  console.log(data)
   const [randomIndex] = useState(() => Math.floor(Math.random() * data.length));
   const randomGame = data[randomIndex];
 
