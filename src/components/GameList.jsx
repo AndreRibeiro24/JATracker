@@ -9,27 +9,29 @@ import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-function GameList({hideHeadings }) {
-  const { data, filteredData, isFiltering, setIsFavourite} = useContext(UserData);
+function GameList() {
+  const { data, filteredData, isFiltering, addItem } = useContext(UserData);
   const gamesToShow = isFiltering ? filteredData : data;
 
   return (
     <main className="w-[100vw] mx-auto pb-40 bg-[#0b1326]">
-      {!hideHeadings && (<section>
+      <section>
         <aside className="flex items-center w-[90vw] mx-auto gap-5 mb-2">
           <div className="bg-[#00687A] w-2 h-10"></div>
           <h2 className="text-[#ffffff] font-mono font-bold text-xl">
             Based on your favorites
           </h2>
         </aside>
-      </section>)}
+      </section>
+
       <section>
-        {!hideHeadings && (<aside className="flex items-center w-[90vw] mx-auto gap-5">
+        <aside className="flex items-center w-[90vw] mx-auto gap-5">
           <div className="bg-[#00687A] w-2 h-10"></div>
           <h2 className="text-[#ffffff] font-mono font-bold text-xl">
             All games
           </h2>
-        </aside>)}
+        </aside>
+
         <aside className="flex flex-wrap justify-evenly gap-3 w-[90%] mx-auto">
           {/*{gamesToShow.length === 0 && (
             <p>No games match your search.</p>
@@ -69,48 +71,47 @@ function GameList({hideHeadings }) {
             );
 
             return (
-              <Link to={`/game-detail/${element.id}`}>
-                <article
-                  key={element.id}
-                  className="w-60 h-60 cursor-pointer mt-20"
-                >
-                  
-                  <div
-                    className="w-[100%] h-40 bg-cover bg-center mb-5"
-                    style={{
-                      backgroundImage: `url(${element.background_image})`,
-                    }}
-                  ></div>
-                  <section>
-                    <h2 className="my-2 text-amber-50 text-xl">
+              <article
+                key={element.id}
+                className="w-60 h-60 cursor-pointer mt-20"
+              >
+                <div
+                  className="w-[100%] h-40 bg-cover bg-center mb-5"
+                  style={{
+                    backgroundImage: `url(${element.background_image})`,
+                  }}
+                ></div>
+                <section>
+                  <h2 className="my-2 text-amber-50 text-xl">
+                    <Link to={`/game-detail/${element.id}`}>
                       {element.name}
-                    </h2>
-                    <div className="flex gap-3">
-                      {hasXbox && <FaXbox className="text-amber-50" />}
-                      {hasPlaystation && (
-                        <FaPlaystation className="text-amber-50" />
-                      )}
-                      {hasPc && (
-                        <GrPersonalComputer className="text-amber-50" />
-                      )}
-                      {hasLinux && <FaLinux className="text-amber-50" />}
-                      {hasAndroid && (
-                        <IoLogoAndroid className="text-amber-50" />
-                      )}
-                      {hasNintendo && (
-                        <BsNintendoSwitch className="text-amber-50" />
-                      )}
-                      {hasVita && (
-                        <SiPlaystationvita className="text-amber-50" />
-                      )}
-                      {hasMac && (
-                        <MdOutlineDesktopMac className="text-amber-50" />
-                      )}
-                      {hasIos && <FaAppStoreIos className="text-amber-50" />}
-                    </div>
-                  </section>
-                </article>
-              </Link>
+                    </Link>
+                  </h2>
+                  <div className="flex gap-3">
+                    {hasXbox && <FaXbox className="text-amber-50" />}
+                    {hasPlaystation && (
+                      <FaPlaystation className="text-amber-50" />
+                    )}
+                    {hasPc && <GrPersonalComputer className="text-amber-50" />}
+                    {hasLinux && <FaLinux className="text-amber-50" />}
+                    {hasAndroid && <IoLogoAndroid className="text-amber-50" />}
+                    {hasNintendo && (
+                      <BsNintendoSwitch className="text-amber-50" />
+                    )}
+                    {hasVita && <SiPlaystationvita className="text-amber-50" />}
+                    {hasMac && (
+                      <MdOutlineDesktopMac className="text-amber-50" />
+                    )}
+                    {hasIos && <FaAppStoreIos className="text-amber-50" />}
+                  </div>
+                </section>
+                <button
+                  className="text-amber-50"
+                  onClick={() => addItem(element)}
+                >
+                  Click
+                </button>
+              </article>
             );
           })}
         </aside>
