@@ -13,8 +13,10 @@ export function UserProvider({ children }) {
   const [data, setData] = useState([]); // State to store the fetched data. Starts as empty array
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState([]);
+  const [isFavourite, setIsFavourite] = useState([])
   const [isFiltering, setIsFiltering] = useState(false);
-  const [userGames, setUserGames] = useState([]); // Information pushed from the Add Game form
+  const [hasFavourite, setHasFavourite] = useState(false);
+
 
   const addGame = async (game) => {
     try {
@@ -64,16 +66,27 @@ export function UserProvider({ children }) {
     setFilteredData(newFilter);
   };
 
+  const checkIsFavourite = () =>{ 
+    if(isFavourite.length > 0){ 
+      setHasFavourite(true);
+    }else{
+      setHasFavourite(false);
+    }
+  }
+
   return (
     <UserData.Provider
       value={{
         data,
         loading,
-        userGames,
         addGame,
         handleFilter,
         filteredData,
         isFiltering,
+        isFavourite,
+        hasFavourite,
+        setIsFavourite,
+        checkIsFavourite,
       }}
     >
       {" "}
