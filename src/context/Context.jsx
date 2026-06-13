@@ -16,6 +16,7 @@ export function UserProvider({ children }) {
   const [isFavourite, setIsFavourite] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
   const [hasFavourite, setHasFavourite] = useState(false);
+  const [comments, setComments] = useState([]);
 
   const addGame = async (game) => {
     try {
@@ -25,17 +26,24 @@ export function UserProvider({ children }) {
       console.log(error);
     }
   };
+
+  const addComment = async (comment) => {
+    const response = await api.post("/comments", comment);
+    setComments((prev) => [...prev, response.data]);
+    return response.data;
+  };
   // To develop next: Toggle favourite for the games that are added as favourite
 
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
       try {
-        const response = await api.get(""); // if you are allready there you can leave it empty string
+        const gamesResponse = await api.get("/games");
+        const commentsResponse = await api.get("/comments");
 
         setLoading(false); // The response from axios is a data object
-        const data = response.data.games; // Always we go to data and then to the array
-        setData(data);
+        setData(gamesResponse.data);
+        setComments(commentsResponse.data);
       } catch (error) {
         setLoading(false);
         console.log(error);
@@ -84,6 +92,8 @@ export function UserProvider({ children }) {
         handleFilter,
         filteredData,
         isFiltering,
+        comments,
+        addComment,
         isFavourite,
         hasFavourite,
         setIsFavourite,
