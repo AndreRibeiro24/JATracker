@@ -79,6 +79,11 @@ export function UserProvider({ children }) {
     setIsFavourite((prev) => [...prev, game]);
   }
 
+  function deleteItem(game) {
+    const item = isFavourite.filter((element) => element.id !== game.id);
+    setIsFavourite(item);
+  }
+
   useEffect(() => {
     setHasFavourite(isFavourite.length > 0);
   }, [isFavourite]);
@@ -98,6 +103,7 @@ export function UserProvider({ children }) {
         hasFavourite,
         setIsFavourite,
         addItem,
+        deleteItem,
       }}
     >
       {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}

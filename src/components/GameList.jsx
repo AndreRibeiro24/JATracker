@@ -8,6 +8,8 @@ import { BsNintendoSwitch } from "react-icons/bs";
 import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
+import { motion } from "motion/react";
 
 function GameList() {
   const { data, filteredData, isFiltering, addItem, hasFavourite } =
@@ -36,9 +38,6 @@ function GameList() {
         </aside>
 
         <aside className="flex flex-wrap justify-evenly gap-3 w-[90%] mx-auto">
-          {/*{gamesToShow.length === 0 && (
-            <p>No games match your search.</p>
-          )}*/}
           {gamesToShow.map((element) => {
             const hasXbox = element.platforms.some(
               (p) =>
@@ -74,10 +73,7 @@ function GameList() {
             );
 
             return (
-              <article
-                key={element.id}
-                className="w-60 h-60 cursor-pointer mt-20"
-              >
+              <article key={element.id} className="w-60 h-60 mt-20 relative">
                 <div
                   className="w-[100%] h-40 bg-cover bg-center mb-5"
                   style={{
@@ -108,12 +104,16 @@ function GameList() {
                     {hasIos && <FaAppStoreIos className="text-amber-50" />}
                   </div>
                 </section>
-                <button
-                  className="text-amber-50"
+                <motion.button
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                  whileHover={{ scale: 1.3 }}
+                  whileTap={{ scale: 1 }}
+                  className="text-amber-50 absolute top-3 right-3 w-7.5 h-7.5"
                   onClick={() => addItem(element)}
                 >
-                  Click
-                </button>
+                  <FaHeart className=" text-[#00687A] cursor-pointer w-auto h-[100%]" />
+                </motion.button>
               </article>
             );
           })}
