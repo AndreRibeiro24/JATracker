@@ -35,15 +35,15 @@ export default function Searchbar({ onResult }) {
   }*/
   }
   return (
-    <div>
-      <div>
+    <div className="flex gap-2 w-full max-w-xl">
         <input
           type="text"
           placeholder="search game title here..."
           onChange={handleFilter}
+          className = "flex-1 bg-[#111c30] border border-white/10 text-white font-mono placeholder-white/30 rounded px-4 py-2 focus:outline-none focus:border-purple-500 transition"
         />
-      </div>
-      <button>Search</button>
+
+      <button className="px-4 py-2 rounded border border-purple-500 text-purple-400 font-mono text-sm uppercase tracking-widest hover:bg-purple-500/10 transition">Search</button>
     </div>
   );
 }
