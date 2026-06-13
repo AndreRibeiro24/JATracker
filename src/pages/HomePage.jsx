@@ -6,16 +6,16 @@ import FeaturedGame from "../components/FeaturedGame"
 import CommentSection from "../components/CommentSection.jsx"
 
 export default function HomePage() {
-  const [results, setResults] = useState(null);
   return (
-    <div>
+    <div className="bg-[#0b1326]">
       <div>
         <HeroSlider />
         <FeaturedGame />
-        <CommentSection />
-        <Searchbar onResult={setResults} />
+        <div className="flex justify-center px-4 py-6 pt-20">
+        <Searchbar/>
+        </div>
       </div>
-      <GameList results={results} />
+      <GameList/>
     </div>
   );
 }
