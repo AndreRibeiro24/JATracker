@@ -79,6 +79,10 @@ export function UserProvider({ children }) {
     setIsFavourite((prev) => [...prev, game]);
   }
 
+  useEffect(() => {
+    setHasFavourite(isFavourite.length > 0);
+  }, [isFavourite]);
+
   return (
     <UserData.Provider
       value={{
@@ -96,9 +100,8 @@ export function UserProvider({ children }) {
         addItem,
       }}
     >
-      {" "}
       {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}
-      {children}{" "}
+      {children}
       {/* if value={data} this means that we have the array value, else value={{data}} we have an object */}
     </UserData.Provider>
   );

@@ -10,18 +10,21 @@ import { MdOutlineDesktopMac } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 function GameList() {
-  const { data, filteredData, isFiltering, addItem } = useContext(UserData);
+  const { data, filteredData, isFiltering, addItem, hasFavourite } =
+    useContext(UserData);
   const gamesToShow = isFiltering ? filteredData : data;
 
   return (
     <main className="w-[100vw] mx-auto pb-40 bg-[#0b1326]">
       <section>
-        <aside className="flex items-center w-[90vw] mx-auto gap-5 mb-2">
-          <div className="bg-[#00687A] w-2 h-10"></div>
-          <h2 className="text-[#ffffff] font-mono font-bold text-xl">
-            Based on your favorites
-          </h2>
-        </aside>
+        {hasFavourite && (
+          <aside className="flex items-center w-[90vw] mx-auto gap-5 mb-2">
+            <div className="bg-[#00687A] w-2 h-10"></div>
+            <h2 className="text-[#ffffff] font-mono font-bold text-xl">
+              Based on your favorites
+            </h2>
+          </aside>
+        )}
       </section>
 
       <section>
