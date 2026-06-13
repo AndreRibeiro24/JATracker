@@ -13,6 +13,7 @@ import {
   FaRegCopyright,
 } from "react-icons/fa6";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -59,7 +60,7 @@ function Footer() {
               <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
               <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
               <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
-              Home
+              <Link to="/">Home</Link>
             </motion.li>
             <motion.li
               className="mb-3.5 cursor-pointer text-center relative"
@@ -84,7 +85,7 @@ function Footer() {
               <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
               <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
               <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
-              Library
+              <Link to="/favourite-games">Favorite Games</Link>
             </motion.li>
             <motion.li
               className="mb-3.5 cursor-pointer relative text-center"
@@ -109,7 +110,7 @@ function Footer() {
               <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
               <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
               <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
-              Favorite Games
+              <Link to="/add-game">Add Game</Link>
             </motion.li>
             <motion.li
               className="mb-3.5 cursor-pointer relative text-center"
@@ -134,7 +135,7 @@ function Footer() {
               <div className="absolute top-0 left-0 w-0.5 h-3 bg-[#00687A]"></div>
               <div className="absolute bottom-0 right-0 w-3 h-0.5 bg-[#00687A]"></div>
               <div className="absolute bottom-0 right-0 w-0.5 h-3 bg-[#00687A]"></div>
-              Contact Us
+              <Link to="/about-us">Contact Us</Link>
             </motion.li>
           </ul>
         </aside>
