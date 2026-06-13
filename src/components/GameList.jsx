@@ -9,28 +9,27 @@ import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-function GameList({ results }) {
-  const { data, filteredData, isFiltering } = useContext(UserData);
-  // const gamesToShow = results ?? data ?? [];
+function GameList({hideHeadings }) {
+  const { data, filteredData, isFiltering, setIsFavourite} = useContext(UserData);
   const gamesToShow = isFiltering ? filteredData : data;
 
   return (
     <main className="w-[100vw] mx-auto pb-40 bg-[#0b1326]">
-      <section>
+      {!hideHeadings && (<section>
         <aside className="flex items-center w-[90vw] mx-auto gap-5 mb-2">
           <div className="bg-[#00687A] w-2 h-10"></div>
           <h2 className="text-[#ffffff] font-mono font-bold text-xl">
             Based on your favorites
           </h2>
         </aside>
-      </section>
+      </section>)}
       <section>
-        <aside className="flex items-center w-[90vw] mx-auto gap-5">
+        {!hideHeadings && (<aside className="flex items-center w-[90vw] mx-auto gap-5">
           <div className="bg-[#00687A] w-2 h-10"></div>
           <h2 className="text-[#ffffff] font-mono font-bold text-xl">
             All games
           </h2>
-        </aside>
+        </aside>)}
         <aside className="flex flex-wrap justify-evenly gap-3 w-[90%] mx-auto">
           {/*{gamesToShow.length === 0 && (
             <p>No games match your search.</p>
@@ -70,8 +69,12 @@ function GameList({ results }) {
             );
 
             return (
-              <Link key={element.id} to={`/game-detail/${element.id}`}>
-                <article className="w-60 h-60 cursor-pointer mt-20">
+              <Link to={`/game-detail/${element.id}`}>
+                <article
+                  key={element.id}
+                  className="w-60 h-60 cursor-pointer mt-20"
+                >
+                  
                   <div
                     className="w-[100%] h-40 bg-cover bg-center mb-5"
                     style={{
