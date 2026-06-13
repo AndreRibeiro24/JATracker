@@ -70,11 +70,8 @@ function GameList({ results }) {
             );
 
             return (
-              <Link to={`/game-detail/${element.id}`}>
-                <article
-                  key={element.id}
-                  className="w-60 h-60 cursor-pointer mt-20"
-                >
+              <Link key={element.id} to={`/game-detail/${element.id}`}>
+                <article className="w-60 h-60 cursor-pointer mt-20">
                   <div
                     className="w-[100%] h-40 bg-cover bg-center mb-5"
                     style={{

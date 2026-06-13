@@ -9,7 +9,7 @@ function HeroGameDetail({ value }) {
   if (!game) return <p>Game not found</p>;
 
   return (
-    <main style={{ backgroundImage: "url()" }}>
+    <main style={{ backgroundImage: `url({game.background_image})` }}>
       <h1>{game.name}</h1>
       <p>{game.description}</p>
     </main>
