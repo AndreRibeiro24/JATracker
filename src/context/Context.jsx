@@ -13,10 +13,9 @@ export function UserProvider({ children }) {
   const [data, setData] = useState([]); // State to store the fetched data. Starts as empty array
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState([]);
-  const [isFavourite, setIsFavourite] = useState([])
+  const [isFavourite, setIsFavourite] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
   const [hasFavourite, setHasFavourite] = useState(false);
-
 
   const addGame = async (game) => {
     try {
@@ -66,12 +65,10 @@ export function UserProvider({ children }) {
     setFilteredData(newFilter);
   };
 
-  const checkIsFavourite = () =>{ 
-    if(isFavourite.length > 0){ 
-      setHasFavourite(true);
-    }else{
-      setHasFavourite(false);
-    }
+  function addItem(game) {
+    const item = isFavourite.some((element) => element.id === game.id);
+    if (item) return;
+    setIsFavourite((prev) => [...prev, game]);
   }
 
   return (
@@ -86,7 +83,7 @@ export function UserProvider({ children }) {
         isFavourite,
         hasFavourite,
         setIsFavourite,
-        checkIsFavourite,
+        addItem,
       }}
     >
       {" "}
