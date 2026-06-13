@@ -4,8 +4,7 @@ import axios from "axios";
 export const UserData = createContext(); // This is the context object and we import it at each component to take the data
 
 const api = axios.create({
-  baseURL:
-    "https://raw.githubusercontent.com/Julianrussmeyer/JATracker-backend/refs/heads/main", // To have access to json-server repo at Github, you go at the file db.jsx and copy paste the raw URL
+  baseURL: import.meta.env.VITE_API_URL, // To have access to json-server repo at Github, you go at the file db.jsx and copy paste the raw URL
 }); // Normaly when you have API key you must to add headers: { 'Authorization' :  , 'x-api-key' : }
 
 export function UserProvider({ children }) {
@@ -15,23 +14,23 @@ export function UserProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState([]);
   const [isFiltering, setIsFiltering] = useState(false);
-  const [userGames,setUserGames] = useState([]); // Information pushed from the Add Game form
+  const [userGames, setUserGames] = useState([]); // Information pushed from the Add Game form
 
-  const addGame = async(game)=>{
-    try{
-      const response = await api.post("/games",game);
-      setUserGames(prev=> [...prev, response.data])
-    }catch(error){
-      console.log(error)
+  const addGame = async (game) => {
+    try {
+      const response = await api.post("/games", game);
+      setUserGames((prev) => [...prev, response.data]);
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
   // To develop next: Toggle favourite for the games that are added as favourite
 
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
       try {
-        const response = await api.get("/db.json"); // if you are allready there you can leave it empty string
+        const response = await api.get(""); // if you are allready there you can leave it empty string
 
         setLoading(false); // The response from axios is a data object
         const data = response.data.games; // Always we go to data and then to the array
@@ -70,7 +69,7 @@ export function UserProvider({ children }) {
       value={{
         data,
         loading,
-        userGames, 
+        userGames,
         addGame,
         handleFilter,
         filteredData,
