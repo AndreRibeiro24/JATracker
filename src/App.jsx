@@ -9,6 +9,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FavouriteGamesPage from './pages/FavouriteGamesPage.jsx'
+import TrackerPage from "./pages/TrackerPage";
 
 export default function App() {
   const { loading } = useContext(UserData);
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="*" element={<ErrorPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
         <Route path="/favourite-games" element={<FavouriteGamesPage/>}/>
+        <Route path="/games-tracker" element={<TrackerPage/>}/>
       </Routes>
       <Footer />
     </div>

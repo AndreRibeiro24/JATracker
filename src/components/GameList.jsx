@@ -12,8 +12,10 @@ import { FaHeart } from "react-icons/fa";
 import { motion } from "motion/react";
 import { AiOutlineStar,AiFillStar } from "react-icons/ai";
 
+
+
 function GameList() {
-  const { data, filteredData, isFiltering, addItem, deleteItem, hasFavourite, isFavourite } = useContext(UserData);
+  const { data, filteredData, isFiltering, addItem, deleteItem, hasFavourite, isFavourite, trackerList, addToTracker, removeFromTracker } = useContext(UserData);
   const gamesToShow = isFiltering ? filteredData : data;
 
   return (
@@ -71,6 +73,7 @@ function GameList() {
             const hasIos = element.platforms.some(
               (p) => p.platform.name === "iOS",
             );
+            const trackerStatus = trackerList.find((g)=> g.id === element.id)?.status || ""
 
             return (
               <article key={element.id} className="w-60 h-60 mt-20 relative">
@@ -119,6 +122,22 @@ function GameList() {
                    ):
                     <AiOutlineStar className="text-[#FFD700] cursor-pointer w-5 h-5" />}
                   </motion.button>
+                  <select
+                    value={trackerStatus}
+                    onChange={(e) => {
+                      if (e.target.value === "") {
+                        removeFromTracker(element);
+                      } else {
+                        addToTracker(element, e.target.value);
+                      }
+                    }}
+                    className="absolute bottom-16 right-0 text-xs bg-[#0b1326] text-amber-50 border border-purple-500/40 rounded px-1 py-0.5 cursor-pointer focus:outline-none"
+                  >
+                    <option value="">+ Track</option>
+                    <option value="playing"> Playing</option>
+                    <option value="played"> Played</option>
+                    <option value="want"> Want to Play</option>
+                  </select>
               </article>
             );
           })}
