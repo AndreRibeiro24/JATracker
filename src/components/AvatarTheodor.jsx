@@ -1,5 +1,5 @@
 import ProfileImage from "../assets/Image-TM.jpg";
-import "../css/TmStyle.css";
+import styles from "../css/TmStyle.module.css";
 import ProfileLogo from "../assets/Logo-TM.jpg";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -7,11 +7,11 @@ import { FaLinkedin } from "react-icons/fa";
 function Avatar() {
   return (
     <main>
-      <section className="main">
-        <article className="partOne">
-          <h1>Theodoros Mitropoulos</h1>
-          <p>Full Stack Developer</p>
-          <p>
+      <section className={styles.main}>
+        <article className={styles.partOne}>
+          <h1 className={styles.h1}>Theodoros Mitropoulos</h1>
+          <p className={styles.p}>Full Stack Developer</p>
+          <p className={styles.p}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since 1966, when designers at Letraset and James Mosley, the
@@ -22,7 +22,7 @@ function Avatar() {
             It was popularised thanks to these sheets and more recently with
             desktop publishing software including versions of Lorem Ipsum.
           </p>
-          <aside className="linkOne">
+          <aside className={styles.linkOne}>
             <a
               href="https://github.com/Theodor-gif"
               target="_blank"
@@ -34,7 +34,7 @@ function Avatar() {
               Theodoros Mitropoulos GitHub
             </a>
           </aside>
-          <aside className="linkOne">
+          <aside className={styles.linkOne}>
             <a
               href="https://www.linkedin.com/in/theodoros-mitropoulos-a101a8247/"
               target="_blank"
@@ -47,10 +47,10 @@ function Avatar() {
             </a>
           </aside>
         </article>
-        <article className="partTwo">
-          <img className="img" width="250" src={ProfileImage} />
-          <img className="logo" width="30" src={ProfileLogo} />
-          <h2 className="name">Theodoros Mitropoulos</h2>
+        <article className={styles.partTwo}>
+          <img className={styles.img} width="250" src={ProfileImage} />
+          <img className={styles.logo} width="30" src={ProfileLogo} />
+          <h2 className={styles.name}>Theodoros Mitropoulos</h2>
         </article>
       </section>
     </main>
