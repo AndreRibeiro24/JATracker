@@ -8,7 +8,7 @@ import ErrorPage from "./pages/ErrorPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import FavouriteGamesPage from './pages/FavouriteGamesPage.jsx'
+import FavouriteGamesPage from "./pages/FavouriteGamesPage.jsx";
 
 export default function App() {
   const { loading } = useContext(UserData);
@@ -28,9 +28,9 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/add-game" element={<AddGamePage />} />
         <Route path="/game-detail/:id" element={<GameDetailPage />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/not-exist" element={<ErrorPage />} />
         <Route path="/about-us" element={<AboutUsPage />} />
-        <Route path="/favourite-games" element={<FavouriteGamesPage/>}/>
+        <Route path="/favourite-games" element={<FavouriteGamesPage />} />
       </Routes>
       <Footer />
     </div>
