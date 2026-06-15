@@ -3,6 +3,7 @@ import { UserData } from "../context/Context";
 import { FaPlay } from "react-icons/fa6";
 import { IoStar } from "react-icons/io5";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 function HeroGameDetail({ value }) {
   const { data } = useContext(UserData);
@@ -45,16 +46,18 @@ function HeroGameDetail({ value }) {
                 boxShadow: "0px 0px 50px rgba(0, 104, 122, 1)",
               }}
               transition={{ duration: 0.6 }}
-              className="border-[#00687A] w-40 h-[100%] flex items-center justify-center cursor-pointer bg-[#00687A] gap-2"
+              className="border-[#00687A] w-40 h-full flex items-center justify-center cursor-pointer bg-[#00687A] gap-2"
             >
               <FaPlay className="cursor-pointer" />
-              <button className="text-amber-50 cursor-pointer">PLAY NOW</button>
+              <button className="text-amber-50 cursor-pointer">
+                <Link to="/not-exist">PLAY NOW</Link>
+              </button>
             </motion.aside>
             <aside className=" w-40 text-center">
               <motion.button
                 whileHover={{ backgroundColor: "rgba(0,5,20,0.8)" }}
                 transition={{ duration: 0.9 }}
-                className="text-amber-50 border border-[#00687A] w-[100%] h-[100%] cursor-pointer bg-[rgba(0,10,40,0.4)]"
+                className="text-amber-50 border border-[#00687A] w-full h-full cursor-pointer bg-[rgba(0,10,40,0.4)]"
               >
                 ADD TO LIBRARY
               </motion.button>
