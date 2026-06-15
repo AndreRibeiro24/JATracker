@@ -17,19 +17,7 @@ export default function ErrorPage() {
   return (
   <div>
     <h1>Error Page</h1>
-    <FaArrowLeft/>
-    <FaArrowRight/>
-    <FaMagnifyingGlass/>
-    <FaHeart className ='w-[10%] border h-[5%] text-amber-800'/>
-    <FaGithub/>
-    <FaPlaystation/>
-    <FaBars/>
-    <Si1Panel/>
-    <BsNintendoSwitch/>
-    
-    {data.games.map((element) => (
-      <h1 key={element.id}>{element.name}</h1>
-    ))}
+
     
   </div>
 )}
