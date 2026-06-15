@@ -1,6 +1,7 @@
 import logo from "../assets/logo.png";
 import NavbarLink from "./NavbarLink";
-import { HiHeart, HiOutlineBars3 } from "react-icons/hi2";
+import { HiOutlineBars3 } from "react-icons/hi2";
+import { AiFillStar } from "react-icons/ai";
 import { Link } from "react-router";
 import NavbarSearch from "./NavSearchbar";
 
@@ -20,7 +21,7 @@ export default function Navbar() {
           </div>
           <div className="mt-2 ml-2 flex justify-between gap-8 items-center">
             <NavbarLink linkHref="/" linkLabel="Home" />
-            <NavbarLink linkHref="/favourite-games" linkLabel="Fav. Games" />
+            <NavbarLink linkHref="/favourite-games" linkLabel="Tracker" />
             <NavbarLink linkHref="/add-game" linkLabel="Add Game" />
             <NavbarLink linkHref="/about-us" linkLabel="About Us" />
           </div>
@@ -30,8 +31,8 @@ export default function Navbar() {
         </div>
         <div className="mt-2 flex gap-4">
           <NavbarLink
-            linkHref="/"
-            linkLabel=<HiHeart className="h-6 w-auto" />
+            linkHref="/favourite-games"
+            linkLabel=<AiFillStar className="h-6 w-auto" />
             icon={true}
           />
           <NavbarLink

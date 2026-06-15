@@ -17,6 +17,23 @@ export function UserProvider({ children }) {
   const [isFiltering, setIsFiltering] = useState(false);
   const [hasFavourite, setHasFavourite] = useState(false);
   const [comments, setComments] = useState([]);
+  const [trackerList, setTrackerList] = useState([]);
+
+  function addToTracker(game, status){
+    setTrackerList((prev) =>{
+      const exists = prev.find((g) => g.id === game.id);
+      if(exists){
+        return prev.map((g)=> g.id === game.id ? {...g, status} : g);
+
+      }
+      return [...prev, {...game,status}];
+    })
+  }
+
+  function removeFromTracker(game) {
+    setTrackerList((prev)=> prev.filter((g)=>g.id !== game.id))
+    
+  }
 
   const addGame = async (game) => {
     try {
@@ -104,6 +121,9 @@ export function UserProvider({ children }) {
         setIsFavourite,
         addItem,
         deleteItem,
+        trackerList,
+        addToTracker,
+        removeFromTracker
       }}
     >
       {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}
