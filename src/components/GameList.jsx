@@ -10,10 +10,12 @@ import { MdOutlineDesktopMac } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { motion } from "motion/react";
+import { AiOutlineStar,AiFillStar } from "react-icons/ai";
+
+
 
 function GameList() {
-  const { data, filteredData, isFiltering, addItem, hasFavourite } =
-    useContext(UserData);
+  const { data, filteredData, isFiltering, addItem, deleteItem, hasFavourite, isFavourite, trackerList, addToTracker, removeFromTracker } = useContext(UserData);
   const gamesToShow = isFiltering ? filteredData : data;
 
   return (
@@ -71,6 +73,7 @@ function GameList() {
             const hasIos = element.platforms.some(
               (p) => p.platform.name === "iOS",
             );
+            const trackerStatus = trackerList.find((g)=> g.id === element.id)?.status || ""
 
             return (
               <article key={element.id} className="w-60 h-60 mt-20 relative">
@@ -104,16 +107,37 @@ function GameList() {
                     {hasIos && <FaAppStoreIos className="text-amber-50" />}
                   </div>
                 </section>
-                <motion.button
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                  whileHover={{ scale: 1.3 }}
-                  whileTap={{ scale: 1 }}
-                  className="text-amber-50 absolute top-3 right-3 w-7.5 h-7.5"
-                  onClick={() => addItem(element)}
-                >
-                  <FaHeart className=" text-[#00687A] cursor-pointer w-auto h-[100%]" />
-                </motion.button>
+                  <motion.button
+                    className="absolute top-3 right-3 bg-black/60 rounded p-1.5"
+                    whileHover={{ scale: 1.3 }}
+                    whileTap={{ scale: 1 }}
+                    onClick={() => {
+                      isFavourite.some((fav) => fav.id === element.id)
+                      ? (deleteItem(element))
+                      : (addItem(element))
+                    }}
+                    >
+                   { isFavourite.some((fav) => fav.id === element.id) ? (
+                    <AiFillStar className ="text-[#FFD700] cursor-pointer w-5 h-5"/>
+                   ):
+                    <AiOutlineStar className="text-[#FFD700] cursor-pointer w-5 h-5" />}
+                  </motion.button>
+                  <select
+                    value={trackerStatus}
+                    onChange={(e) => {
+                      if (e.target.value === "") {
+                        removeFromTracker(element);
+                      } else {
+                        addToTracker(element, e.target.value);
+                      }
+                    }}
+                    className="absolute bottom-16 right-0 text-xs bg-[#0b1326] text-amber-50 border border-purple-500/40 rounded px-1 py-0.5 cursor-pointer focus:outline-none"
+                  >
+                    <option value="">+ Track</option>
+                    <option value="playing"> Playing</option>
+                    <option value="played"> Played</option>
+                    <option value="want"> Want to Play</option>
+                  </select>
               </article>
             );
           })}

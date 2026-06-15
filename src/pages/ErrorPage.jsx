@@ -31,6 +31,9 @@ export default function ErrorPage() {
       <FaBars />
       <Si1Panel />
       <BsNintendoSwitch />
+      <div>
+        <h1>Error Page</h1>
+      </div>
 
       {data.map((element) => (
         <h1 key={element.id}>{element.name}</h1>
