@@ -40,7 +40,7 @@ function Avatar() {
               target="_blank"
               className="gap-5 w-full text-md"
             >
-              <div className="ml-10 flex items-center justify-center">
+              <div className=" flex items-center justify-left">
                 <FaLinkedin className="h-13 w-13" />
               </div>
               Theodoros Mitropoulos LinkedIn
