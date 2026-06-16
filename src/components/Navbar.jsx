@@ -1,6 +1,5 @@
 import logo from "../assets/logo.png";
 import NavbarLink from "./NavbarLink";
-import { HiOutlineBars3 } from "react-icons/hi2";
 import { AiFillStar } from "react-icons/ai";
 import { Link } from "react-router";
 import NavbarSearch from "./NavSearchbar";
@@ -34,11 +33,6 @@ export default function Navbar() {
             linkHref="/favourite-games"
             linkLabel=<AiFillStar className="h-6 w-auto" />
             icon={true}
-          />
-          <NavbarLink
-            icon={true}
-            linkHref="/"
-            linkLabel=<HiOutlineBars3 className="h-6 w-auto" />
           />
         </div>
       </div>
