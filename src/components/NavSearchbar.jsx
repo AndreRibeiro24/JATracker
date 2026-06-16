@@ -50,7 +50,7 @@ export default function NavbarSearch() {
           {loading && <p className="text-gray-400 text-sm">Loading...</p>}
           {open && filtered.map((game) => (
             <li key={game.id} className="px-2 py-2 text-gray-900 hover:bg-blue-100 rounded-md">
-              <Link to="/about-us">
+              <Link to={`/game-detail/${game.id}`}>
                 <div className="flex items-center">
                   <img
                     alt="Game Image"
