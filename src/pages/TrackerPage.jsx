@@ -48,7 +48,7 @@ function TrackerPage() {
                 No games here yet
               </p>
             ) : (
-              <aside className="flex flex-wrap justify-evenly gap-3 w-[90%] mx-auto mt-4">
+              <aside className="flex flex-wrap justify-start gap-4 w-[90%] mx-auto mt-4">
                 {games.map((game) => {
                   const hasXbox = game.platforms.some(
                     (p) =>
