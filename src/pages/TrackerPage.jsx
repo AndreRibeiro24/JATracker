@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserData } from "../context/Context";
 import { Link } from "react-router-dom";
-import { FaPlaystation, FaXbox, FaLinux, FaAppStoreIos } from "react-icons/fa6";
+import { FaPlaystation, FaXbox, FaLinux, FaAppStoreIos, FaPlay, FaCheck } from "react-icons/fa6";
 import { GrPersonalComputer } from "react-icons/gr";
 import { IoLogoAndroid } from "react-icons/io";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
+import { AiFillStar } from "react-icons/ai";
 
 const sections = [
   { label: "Currently Playing", status: "playing" },
@@ -14,8 +15,15 @@ const sections = [
   { label: "Want to Play", status: "want" },
 ];
 
+const statusMeta = {
+  playing: { label: "Playing", icon: <FaPlay className="text-green-400" /> },
+  played: { label: "Played", icon: <FaCheck className="text-blue-400" /> },
+  want: { label: "Want to Play", icon: <AiFillStar className="text-[#FFD700]" /> },
+};
+
 function TrackerPage() {
-  const { trackerList, removeFromTracker } = useContext(UserData);
+  const { trackerList, removeFromTracker, addToTracker } = useContext(UserData);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   return (
     <main className="w-[100vw] mx-auto pb-40 bg-[#0b1326]">
@@ -127,6 +135,42 @@ function TrackerPage() {
                           )}
                         </div>
                       </section>
+
+                      {/* added change status dropdown list */}
+                      <div className="absolute top-3 left-3">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setOpenDropdown(
+                              openDropdown === game.id ? null : game.id,
+                            );
+                          }}
+                          className="flex items-center gap-1 text-xs bg-black/60 text-amber-50 rounded px-2 py-1"
+                        >
+                          {statusMeta[game.status]?.icon}
+                          {statusMeta[game.status]?.label}
+                        </button>
+
+                        {openDropdown === game.id && (
+                          <div className="absolute top-7 left-0 z-10 bg-[#0b1326] border border-purple-500/40 rounded shadow-lg w-36">
+                            {Object.entries(statusMeta)
+                              .filter(([key]) => key !== game.status)
+                              .map(([key, meta]) => (
+                                <button
+                                  key={key}
+                                  onClick={() => {
+                                    addToTracker(game, key);
+                                    setOpenDropdown(null);
+                                  }}
+                                  className="flex items-center gap-2 w-full px-3 py-1.5 text-xs text-amber-50 hover:bg-purple-500/20"
+                                >
+                                  {meta.icon}
+                                  {meta.label}
+                                </button>
+                              ))}
+                          </div>
+                        )}
+                      </div>
 
                       <button
                         onClick={() => removeFromTracker(game)}
