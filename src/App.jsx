@@ -18,7 +18,7 @@ export default function App() {
   if (loading) {
     return (
       <main>
-        <p>Loading ...</p>
+        <LoadingScreen/>
       </main>
     );
   }
