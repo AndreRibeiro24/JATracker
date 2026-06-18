@@ -12,7 +12,7 @@ import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
 
 function HeroGameDetail({ value }) {
-  const { data } = useContext(UserData);
+  const { data, addItem, deleteItem, isFavourite } = useContext(UserData);
 
   const game = data.find((element) => element.id === Number(value));
 
@@ -79,9 +79,16 @@ function HeroGameDetail({ value }) {
               <motion.button
                 whileHover={{ backgroundColor: "rgba(0,5,20,0.8)" }}
                 transition={{ duration: 0.9 }}
+                onClick={() => {
+                  isFavourite.some((fav) => fav.id === game.id)
+                    ? deleteItem(game)
+                    : addItem(game);
+                }}
                 className="text-amber-50 border border-[#00687A] w-full h-full cursor-pointer bg-[rgba(0,10,40,0.4)]"
               >
-                ADD TO LIBRARY
+                {isFavourite.some((fav) => fav.id === game.id)
+                  ? "★ FAVOURITED"
+                  : "☆ ADD TO FAVOURITES"}
               </motion.button>
             </aside>
           </article>
@@ -117,7 +124,7 @@ function HeroGameDetail({ value }) {
               {family === "pc" && (
                 <p className="flex gap-5 items-center">
                   <GrPersonalComputer className="text-amber-50" />
-                  Descktop
+                  Desktop
                 </p>
               )}
               {family === "linux" && <FaLinux className="text-amber-50" />}
