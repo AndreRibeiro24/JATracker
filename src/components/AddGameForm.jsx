@@ -78,6 +78,8 @@ export default function AddGame() {
       rating,
       isFavourite: false,
     });
+    windows.alert("Game was successfully added!");
+    
     setTitle("");
     setGenre("");
     setDescription("");
