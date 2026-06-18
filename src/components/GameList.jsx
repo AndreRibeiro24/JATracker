@@ -84,7 +84,18 @@ function GameList() {
               trackerList.find((g) => g.id === element.id)?.status || "";
 
             return (
-              <article key={element.id} className="w-60 h-60 mt-20 relative">
+              <motion.article
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ amount: "all", once: true }}
+                transition={{
+                  duration: 2.5,
+                }}
+                onViewportEnter={() => console.log("Enter!!")}
+                onViewportLeave={() => console.log("Exit!!")}
+                key={element.id}
+                className="w-60 h-60 mt-20 relative"
+              >
                 <Link to={`/game-detail/${element.id}`}>
                   <div
                     className="w-[100%] h-40 bg-cover bg-center mb-5"
@@ -150,7 +161,7 @@ function GameList() {
                   <option value="played"> Played</option>
                   <option value="want"> Want to Play</option>
                 </select>
-              </article>
+              </motion.article>
             );
           })}
         </aside>
