@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FavouriteGamesPage from "./pages/FavouriteGamesPage.jsx";
 import TrackerPage from "./pages/TrackerPage";
-import LoadingScreen from "./"
+import LoadingScreen from "./components/LoadingScreen"
 
 export default function App() {
   const { loading } = useContext(UserData);
