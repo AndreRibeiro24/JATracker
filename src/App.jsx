@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserData } from "./context/Context.jsx";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import AddGamePage from "./pages/AddGamePage.jsx";
 import GameDetailPage from "./pages/GameDetailPage";
@@ -11,6 +11,16 @@ import Footer from "./components/Footer";
 import FavouriteGamesPage from "./pages/FavouriteGamesPage.jsx";
 import TrackerPage from "./pages/TrackerPage";
 import LoadingScreen from "./components/LoadingScreen"
+
+  function ScrollToTop() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return null;
+}
 
 export default function App() {
   const { loading } = useContext(UserData);
@@ -26,7 +36,8 @@ export default function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
+      <ScrollToTop />
+      <Routes >
         <Route path="/" element={<HomePage />} />
         <Route path="/add-game" element={<AddGamePage />} />
         <Route path="/game-detail/:id" element={<GameDetailPage />} />
