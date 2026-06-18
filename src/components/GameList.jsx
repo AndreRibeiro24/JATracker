@@ -46,7 +46,7 @@ function GameList() {
           </h2>
         </aside>
 
-        <aside className="flex flex-wrap justify-evenly gap-3 w-[90%] mx-auto">
+        <aside className="flex flex-wrap justify-start gap-5 w-[90%] mx-auto">
           {gamesToShow.map((element) => {
             const hasXbox = element.platforms.some(
               (p) =>
@@ -94,7 +94,7 @@ function GameList() {
                 onViewportEnter={() => console.log("Enter!!")}
                 onViewportLeave={() => console.log("Exit!!")}
                 key={element.id}
-                className="w-60 h-60 mt-20 relative"
+                className="w-60 h-60 mt-20 relative mx-auto"
               >
                 <Link to={`/game-detail/${element.id}`}>
                   <div
