@@ -28,7 +28,7 @@ function ErrorPage() {
       {/* Maze */}
       <div className="relative  mx-auto mt-12 border-20 border-emerald-500 p-4">
         {/* Big 404 */}
-        <h1 className="absolute inset-0 flex items-center justify-center text-red-600 text-7xl md:text-9xl font-black pointer-events-none z-10 border-2">
+        <h1 className="absolute inset-0 flex items-center justify-center text-red-600 text-7xl md:text-9xl font-black pointer-events-none z-10">
           404
         </h1>
 
