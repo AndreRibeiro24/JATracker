@@ -38,7 +38,7 @@ export function UserProvider({ children }) {
   const addGame = async (game) => {
     try {
       const response = await api.post("/games", game);
-      setUserGames((prev) => [...prev, response.data]);
+      setData((prev) => [...prev, response.data]);
     } catch (error) {
       console.log(error);
     }

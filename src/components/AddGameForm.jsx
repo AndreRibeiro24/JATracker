@@ -1,6 +1,8 @@
 import {useState, useContext} from 'react'
 import {UserData} from '../context/Context'
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import {useNavigate} from "react-router-dom";
+
 
 const StarRating = ({ rating, setRating }) => {
   const [hovered, setHovered] = useState(0);
@@ -27,6 +29,7 @@ const StarRating = ({ rating, setRating }) => {
 };
 
 export default function AddGame() {
+  const navigate = useNavigate();
   const {addGame} = useContext(UserData);
 
   const [title, setTitle] = useState("");
@@ -78,6 +81,9 @@ export default function AddGame() {
       rating,
       isFavourite: false,
     });
+    window.alert("Game was successfully added!");
+    navigate("/");
+
     setTitle("");
     setGenre("");
     setDescription("");
