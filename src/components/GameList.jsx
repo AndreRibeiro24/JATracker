@@ -1,14 +1,12 @@
-import React from "react";
 import { useContext } from "react";
 import { UserData } from "../context/Context";
 import { FaPlaystation, FaXbox, FaLinux, FaAppStoreIos } from "react-icons/fa6";
-import { GrPersonalComputer, GrAndroid } from "react-icons/gr";
+import { GrPersonalComputer } from "react-icons/gr";
 import { IoLogoAndroid } from "react-icons/io";
 import { BsNintendoSwitch } from "react-icons/bs";
 import { SiPlaystationvita } from "react-icons/si";
 import { MdOutlineDesktopMac } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
 import { motion } from "motion/react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 

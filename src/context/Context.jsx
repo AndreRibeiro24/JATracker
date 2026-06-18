@@ -90,6 +90,11 @@ export function UserProvider({ children }) {
     setFilteredData(newFilter);
   };
 
+  function resetFilter() {
+  setIsFiltering(false);
+  setFilteredData([]);
+}
+
   function addItem(game) {
     const item = isFavourite.some((element) => element.id === game.id);
     if (item) return;
@@ -112,6 +117,7 @@ export function UserProvider({ children }) {
         loading,
         addGame,
         handleFilter,
+        resetFilter,
         filteredData,
         isFiltering,
         comments,
@@ -126,52 +132,7 @@ export function UserProvider({ children }) {
         removeFromTracker
       }}
     >
-      {/* Makes data available to every component wrapped inside UserProvider. Any component can acces it with useContext(UserData) */}
-      {children}
-      {/* if value={data} this means that we have the array value, else value={{data}} we have an object */}
+    {children}
     </UserData.Provider>
   );
 }
-
-/*
-value={data} — passes the array directly:
-jsx// context
-<UserData.Provider value={data}>
-data = [{ id: 1, name: 'Game 1' }, { id: 2, name: 'Game 2' }]
-
-component
-const value = useContext(UserData)
-value = [{ id: 1, name: 'Game 1' }, { id: 2, name: 'Game 2' }]
-
-value.map(...)     // ✅ works
-value.data         // ❌ undefined - no .data property on an array
-
-value={{ data }} — passes an object that contains the array:
-jsx// context
-<UserData.Provider value={{ data }}>
-value = { data: [{ id: 1, name: 'Game 1' }, { id: 2, name: 'Game 2' }] }
-
-component
-const value = useContext(UserData)
-value = { data: [...] }
-
-value.data.map(...)   // ✅ works
-value.map(...)        // ❌ value is an object, not an array
-
-Use {{ data }} when you want to pass multiple things:
-jsx<UserData.Provider value={{ data, loading, name }}>
-
-component
-value.data
-value.loading
-value.name
-
-
-
-❌ can't pass multiple values as array
-<UserData.Provider value={data}>
-
-✅ use object to pass multiple values
-<UserData.Provider value={{ data, loading, name }}>
-
-*/
