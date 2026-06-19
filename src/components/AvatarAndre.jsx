@@ -1,6 +1,7 @@
 import { useState } from "react";
 import cardBack from "../assets/YuGiOh-Card-back.png";
 import myPhoto from "../assets/andrePhoto.png"
+import {FaGithub,FaLinkedin} from "react-icons/fa";
 export default function AboutMeCard() {
   const [flipped, setFlipped] = useState(false);
 
@@ -60,22 +61,36 @@ export default function AboutMeCard() {
               <img src={myPhoto} alt="Andre Ribeiro" className="w-full h-full object-cover object-top"/>
             </div>
 
-
-            <div className="mt-1.5 bg-gradient-to-b from-[#e8c478] to-[#caa15a] border border-[#3a2a10] px-2 py-0.5">
+            <div className="mt-1.5 flex-1 bg-gradient-to-b from-[#e8c478] to-[#caa15a] border border-[#3a2a10] px-2 py-0.5">
               <span className="text-[#1a1130] text-[10px] font-mono font-bold tracking-wide">
                 [Spellcaster / Effect] — Full-Stack Developer
               </span>
             </div>
 
 
-            <div className="mt-1.5 flex-1 bg-[#f4ead1] border-2 border-[#3a2a10] px-2 py-1.5 overflow-y-auto">
-              <p className="text-[#1a1130] text-[10.5px] leading-snug font-serif">
+            <div className="mt-1.5 flex-1 bg-[#f4ead1] border-2 border-[#3a2a10] px-2 py-1.5 flex flex-col justify-between overflow-hidden">
+              <p className="text-[#1a1130] text-[10.5px] leading-snug font-serif overflow-y-auto max-h-[80px]">
                 When summoned, this developer gains{" "}
                 <span className="font-bold">+500 ATK</span> for every cup of
                 coffee consumed. Specializes in React, Node.js, and turning
                 coffee into clean commits. Cannot be destroyed by scope creep
                 — once per sprint, may negate a bug and draw a new feature.
               </p>
+              <div className="flex items-center justify-end gap-3 pt-1 border-t border-[#3a2a10]/20 mt-1">
+              <a
+               href="https://github.com/AndreRibeiro24"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="text-[#1a1130] hover:text-[#b8631a] transition-colors"> <FaGithub size={14}/> 
+               </a>
+
+              <a
+               href="https://www.linkedin.com/in/andr%C3%A9-ribeiro-707849199/"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="text-[#1a1130] hover:text-[#b8631a] transition-colors"> <FaLinkedin size={14}/> 
+               </a>
+              </div>
             </div>
 
             <div className="mt-1.5 flex justify-end gap-3 bg-gradient-to-b from-[#e8c478] to-[#caa15a] border border-[#3a2a10] px-2 py-1 font-mono text-[11px] text-[#1a1130] font-bold">
