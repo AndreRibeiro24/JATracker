@@ -18,21 +18,58 @@ export function UserProvider({ children }) {
   const [hasFavourite, setHasFavourite] = useState(false);
   const [comments, setComments] = useState([]);
   const [trackerList, setTrackerList] = useState([]);
+  const [sugest, setSugest] = useState([]);
 
-  function addToTracker(game, status){
-    setTrackerList((prev) =>{
+  console.log(sugest);
+  console.log(isFavourite);
+
+  function ExeptFav() {
+    // Count how many times each genre appears in favourites
+    const genreCount = {};
+    isFavourite.forEach((fav) => {
+      fav.genres.forEach((g) => {
+        genreCount[g.id] = (genreCount[g.id] || 0) + 1;
+      });
+    });
+
+    const favouriteIds = isFavourite.map((fav) => fav.id);
+
+    // Score each game by how many times its genres appear in favourites
+    const scored = data
+      .filter((game) => !favouriteIds.includes(game.id))
+      .map((game) => {
+        const score = game.genres.reduce(
+          (total, g) => total + (genreCount[g.id] || 0),
+          0,
+        );
+        return { ...game, score };
+      })
+      .filter((game) => game.score > 0) // only games with at least one matching genre
+      .sort((a, b) => b.score - a.score); // highest score first
+
+    setSugest(scored);
+  }
+
+  useEffect(() => {
+    if (isFavourite.length > 0) {
+      ExeptFav();
+    } else {
+      setSugest([]);
+    }
+  }, [isFavourite]);
+
+  function addToTracker(game, status) {
+    setTrackerList((prev) => {
       const exists = prev.find((g) => g.id === game.id);
-      if(exists){
-        return prev.map((g)=> g.id === game.id ? {...g, status} : g);
-
+      if (exists) {
+        return prev.map((g) => (g.id === game.id ? { ...g, status } : g));
       }
-      return [...prev, {...game,status}];
-    })
+      return [...prev, { ...game, status }];
+    });
   }
 
   function removeFromTracker(game) {
-    setTrackerList((prev)=> prev.filter((g)=>g.id !== game.id))
-    
+    setTrackerList((prev) => prev.filter((g) => g.id !== game.id));
   }
 
   const addGame = async (game) => {
@@ -91,9 +128,9 @@ export function UserProvider({ children }) {
   };
 
   function resetFilter() {
-  setIsFiltering(false);
-  setFilteredData([]);
-}
+    setIsFiltering(false);
+    setFilteredData([]);
+  }
 
   function addItem(game) {
     const item = isFavourite.some((element) => element.id === game.id);
@@ -129,10 +166,11 @@ export function UserProvider({ children }) {
         deleteItem,
         trackerList,
         addToTracker,
-        removeFromTracker
+        removeFromTracker,
+        sugest,
       }}
     >
-    {children}
+      {children}
     </UserData.Provider>
   );
 }
