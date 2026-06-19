@@ -57,7 +57,7 @@ export default function AboutMeCard() {
 
             <div className="h-32 bg-gradient-to-br from-[#1a1130] via-[#2b1750] to-[#120a22] border-2 border-[#3a2a10] flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
-              <img src={myPhoto} alt="Andre Ribeiro" className="w-full h-full object-cover"/>
+              <img src={myPhoto} alt="Andre Ribeiro" className="w-full h-full object-cover object-top"/>
             </div>
 
 
