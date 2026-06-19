@@ -94,21 +94,21 @@ function HeroGameDetail({ value }) {
           </article>
         </section>
       </section>
-      <section className="flex justify-evenly mt-20">
-        <article className="border border-white/10 w-[45%] flex flex-col gap-6">
-          <h2 className="text-sm uppercase tracking-widest text-white/50 w-[90%] mx-auto mb-3 mt-10">
-            New Comment
+      <section className="flex justify-evenly mt-20 min-h-80">
+        <article className="border border-white/10 w-[45%] flex flex-col gap-6 max-h-full">
+          <h2 className="text-sm uppercase tracking-widest text-white/50 mx-auto pt-5">
+            DESCRIPTION
           </h2>
-          <p className="text-amber-50 w-[90%] mx-auto mb-10">
+          <p className="text-amber-50 w-[90%] mx-auto mb-10 h-full flex justify-center items-center-safe">
             {game.description}
           </p>
         </article>
-        <article className=" border border-white/10 w-[45%] mb-1 flex flex-col gap-6">
-          <h2 className="text-sm uppercase tracking-widest text-white/50 mx-auto mb-3 mt-10 w-[90%]">
+        <article className=" border border-white/10 w-[45%] mb-1 flex flex-col gap-6  pb-5 max-h-full">
+          <h2 className="text-sm uppercase tracking-widest text-white/50 mx-auto pt-5">
             Platforms
           </h2>
           {platformFamilies.map((family) => (
-            <aside key={family} className="text-amber-50 w-[90%] mx-auto mb-10">
+            <aside key={family} className="text-amber-50 w-[90%] mx-auto mb-1 ">
               {family === "xbox" && (
                 <p className="flex gap-5 items-center">
                   <FaXbox className="text-amber-50" />
