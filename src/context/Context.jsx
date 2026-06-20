@@ -1,16 +1,14 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
-export const UserData = createContext(); // This is the context object and we import it at each component to take the data
+export const UserData = createContext();
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL, // To have access to json-server repo at Github, you go at the file db.jsx and copy paste the raw URL
-}); // Normaly when you have API key you must to add headers: { 'Authorization' :  , 'x-api-key' : }
+  baseURL: import.meta.env.VITE_API_URL,
+});
 
 export function UserProvider({ children }) {
-  // We import the UserProvider only to wrap the components we want to share the data
-
-  const [data, setData] = useState([]); // State to store the fetched data. Starts as empty array
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredData, setFilteredData] = useState([]);
   const [isFavourite, setIsFavourite] = useState([]);
@@ -18,21 +16,50 @@ export function UserProvider({ children }) {
   const [hasFavourite, setHasFavourite] = useState(false);
   const [comments, setComments] = useState([]);
   const [trackerList, setTrackerList] = useState([]);
+  const [sugest, setSugest] = useState([]);
 
-  function addToTracker(game, status){
-    setTrackerList((prev) =>{
+  useEffect(() => {
+    if (isFavourite.length === 0 || data.length === 0) {
+      setSugest([]);
+      return;
+    }
+
+    const genreCount = {};
+    isFavourite.forEach((fav) => {
+      fav.genres.forEach((g) => {
+        genreCount[g.id] = (genreCount[g.id] || 0) + 1;
+      });
+    });
+
+    const favouriteIds = isFavourite.map((fav) => fav.id);
+
+    const scored = data
+      .filter((game) => !favouriteIds.includes(game.id))
+      .map((game) => {
+        const score = game.genres.reduce(
+          (total, g) => total + (genreCount[g.id] || 0),
+          0,
+        );
+        return { ...game, score };
+      })
+      .filter((game) => game.score > 0)
+      .sort((a, b) => b.score - a.score);
+
+    setSugest(scored);
+  }, [isFavourite, data]);
+
+  function addToTracker(game, status) {
+    setTrackerList((prev) => {
       const exists = prev.find((g) => g.id === game.id);
-      if(exists){
-        return prev.map((g)=> g.id === game.id ? {...g, status} : g);
-
+      if (exists) {
+        return prev.map((g) => (g.id === game.id ? { ...g, status } : g));
       }
-      return [...prev, {...game,status}];
-    })
+      return [...prev, { ...game, status }];
+    });
   }
 
   function removeFromTracker(game) {
-    setTrackerList((prev)=> prev.filter((g)=>g.id !== game.id))
-    
+    setTrackerList((prev) => prev.filter((g) => g.id !== game.id));
   }
 
   const addGame = async (game) => {
@@ -49,7 +76,6 @@ export function UserProvider({ children }) {
     setComments((prev) => [...prev, response.data]);
     return response.data;
   };
-  // To develop next: Toggle favourite for the games that are added as favourite
 
   useEffect(() => {
     const getData = async () => {
@@ -57,22 +83,17 @@ export function UserProvider({ children }) {
       try {
         const gamesResponse = await api.get("/games");
         const commentsResponse = await api.get("/comments");
-
-        setLoading(false); // The response from axios is a data object
         setData(gamesResponse.data);
         setComments(commentsResponse.data);
       } catch (error) {
-        setLoading(false);
         console.log(error);
       } finally {
-        setLoading(false); // After all goes to the finally, where we set the loading at false
+        setLoading(false);
       }
     };
 
     getData();
-  }, []); // Runs once when the component mounts. The [] means no dependencies - never runs again
-
-  // Here we will create the functions and pass them from the UserData.Provider
+  }, []);
 
   const handleFilter = (e) => {
     const searchWord = e.target.value;
@@ -91,9 +112,9 @@ export function UserProvider({ children }) {
   };
 
   function resetFilter() {
-  setIsFiltering(false);
-  setFilteredData([]);
-}
+    setIsFiltering(false);
+    setFilteredData([]);
+  }
 
   function addItem(game) {
     const item = isFavourite.some((element) => element.id === game.id);
@@ -129,10 +150,11 @@ export function UserProvider({ children }) {
         deleteItem,
         trackerList,
         addToTracker,
-        removeFromTracker
+        removeFromTracker,
+        sugest,
       }}
     >
-    {children}
+      {children}
     </UserData.Provider>
   );
 }
