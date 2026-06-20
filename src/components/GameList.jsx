@@ -91,8 +91,6 @@ function GameList() {
                 transition={{
                   duration: 2.5,
                 }}
-                onViewportEnter={() => console.log("Enter!!")}
-                onViewportLeave={() => console.log("Exit!!")}
                 key={element.id}
                 className="w-60 h-60 mt-20 relative mx-auto"
               >

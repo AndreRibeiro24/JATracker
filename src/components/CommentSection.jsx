@@ -32,7 +32,6 @@ export default function CommentSection({ value }) {
       await addComment(newComment);
       setCommentInput("");
       setAuthorInput("");
-      console.log("Submitted: ", newComment);
     } catch (error) {
       console.log(error);
     }
