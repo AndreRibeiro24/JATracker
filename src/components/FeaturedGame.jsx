@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function FeaturedGame() {
   const { data } = useContext(UserData);
-  console.log(data)
+
   const [randomIndex] = useState(() => Math.floor(Math.random() * data.length));
   const randomGame = data[randomIndex];
 
@@ -30,7 +30,10 @@ export default function FeaturedGame() {
             <h1 className="mb-2 text-4xl font-medium">{randomGame.name}</h1>
             <p className="text-sm">{randomGame.description}</p>
             <div className="mt-4 max-w-100">
-            <NavbarLink linkHref={`/game-detail/${randomGame.id}`} linkLabel="Read More" />
+              <NavbarLink
+                linkHref={`/game-detail/${randomGame.id}`}
+                linkLabel="Read More"
+              />
             </div>
           </div>
         </div>
