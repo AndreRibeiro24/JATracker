@@ -20,9 +20,6 @@ export function UserProvider({ children }) {
   const [trackerList, setTrackerList] = useState([]);
   const [sugest, setSugest] = useState([]);
 
-  console.log(sugest);
-  console.log(isFavourite);
-
   function ExeptFav() {
     // Count how many times each genre appears in favourites
     const genreCount = {};
